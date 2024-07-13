@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  each item in data
+    a(href=item.link) #{item.name}
+    br 
+
+  script.

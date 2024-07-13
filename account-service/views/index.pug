@@ -2,61 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
 
-  if showBtn
-    button(type="submit", id=showBtn) #{showBtn}
-
-  if showBtn == 'Login'
-    a(href="/signup") Sign Up?
-  else if showBtn == 'Signup'
-    a(href="/login") Log in?
-  else
-    a(href="/logout") Log out?
+  a(href="/products") 
+    | View Products
+  br
+  a(href="/logout") 
+    | Log out?
 
   script.
-    document
-      .getElementById('Login')
-      .addEventListener('click', async function() {
-        try {
-          const response = await fetch('/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              username: "helloworld",
-              password: "helloworld"
-            })
-          });
-
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-
-          const data = await response.json();
-          console.log('Login successful:', data);
-        } catch (error) {
-          console.error('There was a problem with the fetch operation:', error);
-        }
-      });
-
-    //- document
-    //-   .getElementById('Signup')
-    //-   .addEventListener('click', async function() {
-    //-     try {
-    //-       const response = await fetch('/signup', {
-    //-         method: 'POST',
-    //-         headers: { 'Content-Type': 'application/json' },
-    //-         body: JSON.stringify({})
-    //-       });
-
-    //-       if (!response.ok) {
-    //-         throw new Error('Network response was not ok');
-    //-       }
-
-    //-       const data = await response.json();
-    //-       console.log('Login successful:', data);
-    //-     } catch (error) {
-    //-       console.error('There was a problem with the fetch operation:', error);
-    //-     }
-    //-   });
-
